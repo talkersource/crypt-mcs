@@ -1,0 +1,10 @@
+
+~FT* listbans *
+
+Usage: listbans sites/users/words
+
+This will list all the sites or all the users currently banned from logging
+in or the current banned words.
+
+~FRSee:~FY ban, unban, swban
+

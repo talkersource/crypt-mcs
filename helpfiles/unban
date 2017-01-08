@@ -1,0 +1,9 @@
+
+~FT* unban *
+
+Usage: unban site/user <site/user name>
+
+This will remove a site or user ban if the ban is currently set.
+
+~FRSee:~FY ban, listbans
+

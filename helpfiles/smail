@@ -1,0 +1,9 @@
+
+~FT* smail *
+
+Usage: smail <user>
+
+You can send mail to another user.
+
+~FRSee:~FY rmail, dmail, from
+

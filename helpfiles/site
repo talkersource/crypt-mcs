@@ -1,0 +1,12 @@
+
+~FT* site *
+
+Usage: site <user>
+
+This shows you the hostname, local port number and ip address from which the 
+given user is logging in from, eg:
+
+~FTUser is logged in from localhost:1105 (127.0.0.1)
+
+~FRSee: ~FYpeople
+

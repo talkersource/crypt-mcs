@@ -1,0 +1,11 @@
+
+~FT* Clone *
+
+Usage: clone [<room>]
+
+Clone will create a clone of you in whichever room you specify. If you give
+leave out the room option the clone is created in the room you are currently 
+in. The clone can then listen in to the conversation in the room.
+
+~FRSee:~FY destroy, switch, allclones, myclones, csay, chear, cemote
+

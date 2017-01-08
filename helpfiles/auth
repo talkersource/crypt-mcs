@@ -1,0 +1,21 @@
+
+~FT* auth *
+
+Useage: auth user <wait-time> <<all>>
+
+This command does an authentication check on a user.  It sends a query
+to identd on users computer and reports the result (which should be
+the users unix username/email address).  If the remote computer
+is not running identd then an error is reported.  It's worth pointing
+out that most users won't be on computers that run identd (eg, Windows
+PC's) and it's very easy to forge an ident result on a PC, (eg, just
+by running the MIRC IRC client).
+
+~FRWARNING!~RS - This command can hang the talker while the 
+authentication is taking place.  To get around this the command
+will time out if a result isn't delivered quick enough.  You can
+specify a time out in seconds if are querying a slow server.
+  
+If the all option is used with a time then the full string
+returned by the server is shown.
+

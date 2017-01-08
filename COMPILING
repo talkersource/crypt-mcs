@@ -1,0 +1,43 @@
+Compiling & running the talker
+------------------------------
+
+
+To compile the talker:
+
+
+Linux, AIX, IRIX, OSF : cc cryptv5.c -o server
+
+HP-UX : cc -Ae cryptv5.c -o server  (you need the ANSI compiler)
+
+SCO 3.2 : cc cryptv5.c -lsocket -lcrypt_i -o server
+
+DYNIX 4 : cc cryptv5.c -lsocket -lnsl -o server
+
+Solaris/SunOS : cc -lsocket -lnsl cryptv5.c -o server
+
+Windows 95/NT: I have tested this under Borland C++ v4.5 and v5.0, load the 
+file into the IDE and select WIN32 Console app, static libraries and turn
+off all compiler warnings.  This should work in the same way for the Microsoft
+compiler but I haven't tested it.  You should make sure the platform.h file
+is set for a Windows compile.
+
+Ignore any compiler warnings such as signal warnings on Solaris.  If the 
+above compiler options do not work then try gcc instead (eg, gcc cryptv5.c -o
+server). On FreeBSD you may need to include -lcrypt_i or use the ufc.c file included 
+here (see platform.h). 
+
+Note: I have only personally tested the Linux, Windows, OSF, Solaris & SunOS
+compiles, if it does not work on your system only minor changes will be 
+required, let me know what they are, and if you can't figure them out then 
+let me know the errors you get when compiling and I'll try and fix it.
+
+You can of course change the name of the object file from server to whatever
+you want...  If you are running this 'without permission' (naughty you!) then
+you could rename it to csh or gcc to disguise it on process lists ;)
+
+
+To compile the extra files:
+
+cc ncat.c -o ncat
+cc userinfo.c -o userinfo
+

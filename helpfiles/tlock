@@ -1,0 +1,8 @@
+
+~FT* tlock *
+
+This locks to the topic to your level so users of a lower level cannot change 
+it.
+
+~FTSee: ~FYtopic
+

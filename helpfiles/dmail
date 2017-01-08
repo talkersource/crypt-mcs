@@ -1,0 +1,9 @@
+
+~FT* dmail *
+
+Usage: dmail <amount>/all
+
+Deletes your mail messages from your mailbox.
+
+~FRSee:~FY smail, rmail, from
+

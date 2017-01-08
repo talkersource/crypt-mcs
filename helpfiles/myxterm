@@ -1,0 +1,9 @@
+
+~FT* My Xterm *
+
+Usage: .myxterm <text string>
+
+The changes the title bar & icon of the xterm the talker is running on.  
+
+~FRSee: ~FYallxterm
+

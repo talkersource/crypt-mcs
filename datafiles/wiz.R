@@ -1,0 +1,3 @@
+
+Wiz room - set to private so that low ranking users can't enter...
+

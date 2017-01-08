@@ -1,0 +1,9 @@
+
+* nuts *
+
+This sets the speech prompt style of talker as used in Nuts by Neil Robertson.
+All commands are prefixed by a ~FG.~RS and other input appears as normal 
+speech.
+
+See also: ewtoo
+

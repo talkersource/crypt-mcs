@@ -1,0 +1,20 @@
+
+~FT* Newuser Help *
+
+For auto-promotion to ~FMUSER~RS you should type:
+
+~FG.email~RS ~FYyour_email_address~RS (This is hidden from other users)
+
+To set up your account you should do the following:
+
+Use ~FG.desc~RS to enter a description
+Use ~FG.pdesc~RS to enter a predescription
+Use ~FG.entpro~RS to enter a profile about yourself
+Use ~FG.vemail~RS to set your email address visible if desired
+Use ~FG.www~RS to enter your homepage address if desired
+Use ~FG.colour~RS and ~FG.termtype~RS as needed
+Use ~FG.prompt~RS to select a prompt type
+Choose ~FG.nuts~RS or ~FR.ewtoo~RS command style
+
+Type ~FY.help command~RS for more information
+

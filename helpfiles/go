@@ -1,0 +1,10 @@
+
+~FT* go *
+
+Usage: go <room>
+
+This command moves you to another room which must be linked to your current
+one (unless you are a wizard or higher).
+
+~FRSee:~FY move, join
+

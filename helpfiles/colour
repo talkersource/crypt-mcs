@@ -1,0 +1,21 @@
+~FT* Text Effects & Colours *
+
+Some terminal types allow you to use ANSI text effects.  Most support bold
+and reverse text.  And some (Linux, AIX, Irix, DOS) support ANSI colour.
+To turn on/off all colour at your terminal use .colour
+To use text effects use a tilde(~) then the colour code:
+
+~RSRS - Reset (No effects)  ~OLOL - Bold              ~RS~LILI - Blinking
+~RVRV - Reverse             ~RS~ULUL - Underline
+
+Foreground colours...    ~FKFK - Black foreground  ~FRFR - Red foreground
+~FGFG - Green foreground    ~FYFY - Yellow foreground ~FBFB - Blue foreground
+~FMFM - Magneta foreground  ~FTFT - Cyan foreground   ~FWFW - White foreground
+
+Background colours...    ~FW~BKBK - Black background  ~BRBR - Red background  
+~BGBG - Green background    ~BYBY - Yellow background ~BBBB - Blue background 
+~BMBM - Magneta background  ~BTBT - Cyan background   ~BWBW - White background
+
+Or use the ^shortcut^ method for bold text on/off - a circumflex (that's the 
+'power to' sign, perhaps shift 6 on your keyboard).
+

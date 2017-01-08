@@ -1,0 +1,42 @@
+# Sample Crypt config file
+#
+
+INIT:
+mainport          3000 
+wizport           3001
+max_users         45
+max_clones        3
+heartbeat         2
+login_idle_time   120
+user_idle_time    600
+ban_swearing      NO
+auto_connect      NO
+logging           YES
+password_echo     NO
+ignore_sigterm    NO
+prompt_def        1
+minlogin_level    NONE
+mesg_life         5
+mesg_check_time   01:00
+min_private       2
+ignore_mp_level   WIZ
+wizport_level     GOD
+atmospherics      OFF
+crash_action      REBOOT
+colour_def	  ON
+allow_caps_in_name YES
+backup_check_time 02:00
+spod_check_time   03:00
+web_page          ON
+save_newbies      NO
+ewtoo_default     NO
+autopromote       ON
+userweb           OFF
+backups           OFF
+
+ROOMS:
+en entry    pa,cw         PUB 
+pa park     en            PUB
+cw cows     en            BOTH
+wi wiz      en            PRIV
+

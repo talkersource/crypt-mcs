@@ -1,0 +1,10 @@
+
+~FT* prompt *
+
+Usage: prompt [0|1|2|3]
+
+Prompt 0 gives no prompt.
+Prompt 1 gives time of day, time logged on and username
+Prompt 2 gives time of day and user name
+Prompt 3 gives time of day and username of last private tell
+
