@@ -1,8 +1,8 @@
 /**************************************************************************/
-/*                       Header file for Crypt v5.0                       */
+/*                       Header file for Crypt v5.3                       */
 /************** (Was) Header file for NUTS version 3.2.1 ******************/
 
-#define VERSION "5.0"
+#define VERSION "5.3b"
 
 /* Various filenames, most files are kept in DATAFILES directory */
 #define DATAFILES "datafiles"
@@ -13,9 +13,11 @@
 #define NEWSFILE "newsfile"
 #define MAPFILE "mapfile"
 #define SITEBAN "siteban"
+#define SILENTBAN "silent.ban"
 #define PARTIAL_SITEBAN "partial.ban"
 #define USERBAN "userban"
 #define SYSLOG "syslog"
+#define WHERE_TEXT "where.txt"
 #define WHERE_FILE_A "ip_names.a"
 #define WHERE_FILE_B "ip_names.b"
 #define WHERE_FILE_C "ip_names.c"
@@ -41,7 +43,7 @@
 #define WEB_PAGE_FILE "www/who.html"
 
 /* This is the string used by the .thp command */
-#define TALKER_HOMEPAGE "~OLSYSTEM INFORMATION:~RS Crypt Homepage - http://www.deathsdoor.com/crypt\n"
+#define TALKER_HOMEPAGE "~OLSYSTEM INFORMATION:~RS Crypt Homepage - http://churchnet2.ucsm.ac.uk/~crypt\n"
 
 #define OUT_BUFF_SIZE 80
 #define MAX_WORDS 10
@@ -94,7 +96,7 @@
 #define CLONE_HEAR_ALL 2
 
 /* Hardcoded admin password */
-#define SU_PASSWORD "eldoeldo"
+#define SU_PASSWORD "scott"
 #define ATMOS_CHANCE 2  /* 2% chance of an atmos each cycle */
 
 #define PROMPT_TYPES 3 /* 3 different prompt styles */
@@ -109,7 +111,7 @@ struct user_struct {
   char login_phrase[LOG_PHRASE_LEN+1],logout_phrase[LOG_PHRASE_LEN+1];
   char rank[38],old_tell[USER_NAME_LEN+1],ip_name[81],ip_num[20];
   char email[81],www[81],afk_mesg[81];
-  
+
   unsigned long auth_addr;
   
   int type,port,login,socket,attempts,buffpos,filepos;
@@ -118,11 +120,11 @@ struct user_struct {
   int accreq,last_login_len,ignall_store,clone_hear,afk;
   int edit_op,colour,ignshout,igntell,sex,autologout,revline;
   int tell,licked,been_licked,xterm,termtype,site_port,figlet;
-  int vis_email,examined;
-  
+  int vis_email,examined,home,window_x,window_y;
+
   time_t last_input,last_login,total_login,read_mail;
   char *malloc_start,*malloc_end;
-  
+
   struct room_struct *room,*invite_room;
   struct user_struct *prev,*next,*owner;
 };
@@ -171,16 +173,16 @@ char *level_name[]={
 "NEW","USER","WIZ","ARCH","GOD","UBERGOTH","*"
 };
 
-/* Keep the names less than or equal to 7 characters for proper formatting */
+/* Keep the names less than or equal to 9 characters for proper formatting */
 /* And keep the unknown levels the same as the level_name string above...  The
 unknown strings are also used in other bits of the program for various things
 (like the min login level bit) */
 
 static char *new_levels[3][8]={
   /* Unknown, male, female */
-  {"NEW","USER","WIZ","ARCH","GOD","UBERGOTH","ASEXUALMF","*"},
-  {"NEW","USER","WARLOCK","SORCEROR","GOD","UBERGOTH","SEXY_MF","*"}, 
-  {"NEW","USERESS","WITCH","SORCERESS","GODDESS","UBERGOTH", "SEXY_MF","*"} 
+  {"NEW","USER","WIZ","ARCH","GOD","UBERGOTH","UBERGOTH","*"},
+  {"NEW","USER","WARLOCK","SORCEROR","GOD","UBERGOTH","UBERGOTH","*"},
+  {"NEW","USERESS","WITCH","SORCERESS","GODDESS","UBERGOTH", "UBERGOTH","*"}
 }; 
 
 char *sex_name[]={
@@ -217,7 +219,8 @@ char *command[]={
 "ignfig",  "webpage",  "login",     "email",  "vemail",
 "www",     "talkers",  "dsay",      "beep",   "newuser",
 "bsx",     "gpemote",  "home",      "edit",   "boot",
-"rules",   "poke",     "sinfo",     "*"
+"rules",   "poke",     "sinfo",     "addwhere","rose",
+"window",  "*"
 };
 
 
@@ -240,7 +243,7 @@ VIEWLOG,  ACCREQ,   REVCLR,   CREATE, DESTROY,
 MYCLONES, ALLCLONES,SWHO,     SWITCH, CSAY,   CHEAR,
 SWBAN,    AFK,      CLS,      COLOUR, CEMOTE,
 IGNSHOUT, IGNTELL,  SUICIDE,  DELETE_C, REBOOT,
-BANNER,   SING,     THINK,    LOTTERY,FLOWERS,  
+BANNER,   SING,     THINK,    LOTTERY,FLOWERS,
 LICK,     WHERE,    MYXTERM,  ALLXTERM,SEX,
 RANKS,    SOS,      TERMTYPE, TLOCK,
 FAQ,      ATMOS,    EWTOO,    NUTS,   HUG,
@@ -250,12 +253,13 @@ SU,       PDESC,    AUTH,     BACKUP, DOWEB,
 IGNFIG,   WEBPAGE,  LOGIN,    EMAIL,  VEMAIL,
 WWW,      TALKERS,  DSAY,     BEEP,   NEWUSER,
 BSX,      GPEMOTE,  HOME,     EDIT,   BOOT,
-RULES,    POKE,     SINFO
+RULES,    POKE,     SINFO,    ADDWHERE, ROSE,
+WINDOW
 } com_num;
 
 
 /* These are the minimum levels at which the commands can be executed.
-   Alter to suit. */
+	 Alter to suit. */
 int com_level[]={
 NEW, NEW, NEW, NEW, USER, /* Quit */
 USER,NEW,USER,USER,USER,
@@ -284,7 +288,8 @@ GOD, USER,GOD, UBERGOTH, UBERGOTH, /* su */
 USER,UBERGOTH,USER,NEW,USER, /* ignfig */
 USER,USER,USER,WIZ, WIZ,
 GOD, USER,USER,USER,USER,
-NEW, USER,GOD
+NEW, USER,GOD,UBERGOTH,USER,
+NEW
 };
 
 /****************************************************************************/
@@ -357,13 +362,13 @@ int time_out_afks,allow_caps_in_name,atmos,atmos_no;
 int backup_check_hour,backup_check_min,backup_on,userweb_on;
 int spod_check_hour,spod_check_min,auto_promote;
 int web_page_on,save_newbies,command_mode_def;
+int total_logins,peak_logins;
 
 #ifdef WIN_NT
 HANDLE hThread;
 #endif
 
-extern char *sys_errlist[];
-
+/* extern char *sys_errlist[]; */
 /******************** Figlet globals & defines ************************/
 #define FIGLET_FONTS "fonts"
 
@@ -402,13 +407,4 @@ int charheight,defaultmode;
 #endif
 
 /**************************************************************************/
-
-
-
-
-
-
-
-
-
 
