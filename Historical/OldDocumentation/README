@@ -1,0 +1,291 @@
+                       The Crypt Talker (Version 5) 
+                       ----------------------------
+
+This is an advanced talker system based on Nuts v3.2.1 by Neil Robertson.
+It has been written over a long period of time by Bryan McPhail (Mish).
+
+I can be contacted at:
+	mish@tendril.force9.net
+
+If that fails try:
+	mish@mudhole.spodnet.uk.com
+	bmcphail@cs.strath.ac.uk
+	crypt@churchnet2.ucsm.ac.uk
+
+The webpage for this package is at: http://www.tendril.force9.co.uk/crypt/
+
+At the time of writing the Crypt runs at: churchnet2.ucsm.ac.uk 666
+Webpage: http://churchnet2.ucsm.ac.uk/~crypt
+
+
+
+Bryan McPhail, August 1997
+
+*******************************************************************************
+
+Contents:
+
+1: Foreword
+2: Differences from Nuts
+3: Setup
+4: Running & maintaining a talker
+5: Customising The Crypt to Make your own Talker
+6: Notes about the Windows version
+7: Format of CONFIG file
+8: 'Bugs' & Comments :)
+
+*******************************************************************************
+
+1: Foreword:
+
+	Ok, why does the world need another talker system?  Well, I started to
+enhance the original Nuts code in my spare time, adding many new features (some
+of which Neil copied in his Nuts updates :) and responding to user feedback on
+the way the talker operated.  Eventually there were so many changes, the Crypt
+differed from original Nuts quite a lot.  I feel the Crypt is sufficiently
+different from Nuts to be worth releasing for others to modify and set up
+their own talkers based on it.  In particular the Crypt is fully compatible
+with Windows 95 & Windows NT and provides a full talker system on those OS's
+as well as Unix variants.
+
+*******************************************************************************
+
+2: Differences from Nuts:
+
+In no particular order here are the things that have been changed, if you 
+modify the code you may want to remove or add some commands, particulary
+the 'fun' things such as .lick, .lottery etc :)
+
+* All of the bugs in Nuts have been fixed and the code has been improved in a
+number of places, including making the main loop more efficent.  
+
+* The look and feel of the system has changed - there is far more colour used 
+than before which looks nicer if nothing else :)  Also there is far less use
+of background colours which were hard to read on some systems (eg, black text 
+onto blue background).
+
+Also users are informed when someone examines them and all users in a room
+are told of promotions, muzzlings, etc.  Users also get more information
+about them stored such as email address, web address, gender, a pre-desc as 
+well as a description, a special rank setting and so on.  You can specify 
+an afk phrase when you leave the keyboard and use the shortcuts >> & << to 
+continue a private conversation without having to type the users name.
+
+* A .where command has been added for users to see where others are logged in 
+from.  The infamous .figlet command has been provided - you will either love
+this or hate it!  It's up to you what level users you let have access to it...
+
+* Auto-backups of the userfiles are performed as are an update of the web 
+pages for the talker.  High level users can perform automatic Auth checks (see
+later) and alter the title bar & icon name of xterm windows.  Various terminal
+types are supported.
+
+* A load of 'fun' & social commands have been added such as .lottery, .hug, 
+.numpty - some of these are private jokes (esp. the god pidgeon command!) and 
+you may want to remove them in your talker :)
+
+* Windows 95 & NT support - The system compiles & runs perfectly on Microsoft
+operating systems as well as Unix variants.  At the time of writing I _think_
+this is the only telnet talker system that runs on Windows & Unix.
+
+* Users also get their own private home room (as in EW2 talkers) which is 
+private even from super-users and the user can invite friends in or boot them
+out at will!
+
+* Sensible shortcuts are implemented.  Including use of ' in .tell & .shout 
+
+* The Crypt is also Year-2000 compliant so rest assured it won't crash because
+of the 'Millenium bug' :>
+
+* Many EW-2 features have also been incorporated, (.ewtoo command) for partial 
+EW-2 compatibilty.  " for speech alias etc.
+
+* The other major difference from Nuts is that the Crypt doesn't contain any
+Nuts netlink code.  I felt that this code was pretty useless (sorry Neil!) in
+practice, so I saved space by just removing it all.
+
+Anyway, just run Nuts & Crypt side by side and you'll see all the 
+differences :>
+
+*******************************************************************************
+
+3: Setup
+
+Read the file COMPILING to get going.  This says pretty much all you need to
+know...  Also included are two extra files...  The first, ncat, is a version
+of the Unix cat command that parses Nuts colour codes so you can view the
+syslog in colour (Unix only).  The second is called userinfo and provides
+various statistics on the users of your talker.
+
+After compiling take a look at the file called config in the datafiles 
+directory.  The default one is fine but you'll probably want to change the
+port numbers and things when you get going.
+
+*******************************************************************************
+
+4: Running & Maintaining a Crypt system:
+
+Ok, you'll need a bunch of high-levels users to keep things in order and the
+actual coder or someone with access to that account will have to keep the
+.where database files up to date.  Whenever someone logs in from an unknown
+site, the users name, site & ip address are saved the system log, you can 
+find these easily in Unix with the command:
+
+ncat syslog | grep Unknown
+
+which produces all the lines with the word Unknown in them.  The general idea
+is just to mark down the ip address with a text line listing country, ISP or
+University site, for example.  These lines go into the files 
+datafiles/ip_names.* 
+
+The file format is simple, the ip address on one line, the text line on the 
+next.
+
+If you don't know ip addresses can be of 3 (well, more) types:
+
+Class A IP's : < 127.*.*.*
+Class B IP's : >= 128.*.*.* & < 192.*.*.*
+Class C IP's : >= 192.*.*.* 
+
+With class a addresses the first number UNIQUELY identifies the site, so
+any address starting with 15 for example are the company Hewlett Packard.
+These addresses go in the file ip_names.a and you only have to list the
+first number (with a trailing . in the file), eg, 
+
+15.
+Hewlett Packard
+
+With class b addresses the first TWO numbers uniquely identify a site, these
+addresses go into the file ip_names.b, eg,
+
+130.159.
+The University Of Strathclyde, Glasgow, UK
+
+And with class c addresses the first THREE numbers are needed to uniquely
+identify a site, these go into the file ip_names.c
+
+NOTE:  An organisation may own more than one network,eg several class c's, you
+need to note down all the networks on seperate lines (see ip_names.c for an
+example).
+
+If you don't know what to put down for the text of a site you can try looking
+up www.domainname  to see what the service provider is, or you can do
+traceroute sitename (tracert in Windows) and try to figure out who the 
+service provider is.
+
+To hunt down all the class c networks a provider owns you can do host -a domain
+in Unix and examine the results.
+
+Or you just always ask the person who is logging in from that site :> :>
+
+*******************************************************************************
+
+5: Customising The Crypt to Make your own Talker
+
+Firstly you should edit datafiles/config and change it to your settings,
+it's fairly obvious what everything does...  Then edit all of the rooms files
+and message of the day files (including newbie_motd).
+
+Then look at the .h file and change the text strings to whatever you want.
+Remember to change the hard-coded admin password.
+
+In the main file, in kill_user(), you can set up personal .kill entries for 
+the superusers.  In the function web_page() you should also change the layout
+of the .who html file to your preference.
+
+If you can run a web page on your server then I suggest making a directory
+called www inside the crypt dir and linking it from public_html.  Then the
+.who web page can be written to www/who.html (the default).
+
+
+
+*******************************************************************************
+
+6: Notes about Windows version:
+
+Firstly I have no idea how to come up with a windows equivalent of fork()..
+So when you run the crypt on windows you are stuck with a DOS box... To get
+around this I have supplied a file called runner.c - this simply runs a process
+in the background, ie, no DOS box.  So just edit the file runner.cfg to point
+to your Crypt executable and place a link to runner.exe in your Windows
+Startup folder.  
+
+Apart from that Crypt on Windows is identical to the Unix version.  In the
+future I may do a version which supports more Windows features.  As a side
+note Windows DOES include full local loopback so you can experiment with
+the Crypt without being online...  Just make sure you have TCP/IP installed
+and a working hosts file in your Windows directory.  The format is the same
+as the Unix hosts file.  If you don't know what that is then save a file in 
+your Windows directory (typically c:\windows) called 'hosts' with this line 
+in it:
+
+127.0.0.1       localhost localhost
+
+You should now be able to refer to your machine as localhost or 127.0.0.1
+and can run any kind of server on it.
+
+*******************************************************************************
+
+7: Format of CONFIG file
+
+The config file is fairly easy to follow...  You can just modify the
+existing one to your needs.
+
+The ROOMS section is laid out as follows:
+
+<mnemonic> <name> <links>
+
+The links just list the mnemonics of the rooms that can be accessed from 
+each room, seperated by commas (NOTE: no spaces!).
+
+*******************************************************************************
+
+8: 'Bugs' & Comments :)
+
+User boards aren't cleared automatically...  So users must clear them 
+themselves (or you can just rm *.B if you like :)
+
+Information about each command can be found in the helpfiles dir, in
+particular look at the details for the auth command.
+
+At the moment attempted logins from banned sites & users are marked to 
+the syslog and printed to high-level users currently logged on.  It
+has been noted that this makes the system possible to attacks from *eViL*
+users (ie, scripts or programs that continually try to log in, causing
+the syslog to fill up and loss of performance).  If you get problems from
+this then comment out the write_syslog() and write_user() calls in 
+accept_connection().  If you don't want to ban a site completely because
+you have legitimate users there, you can ban new users from logging
+in from that site by doing .ban partial <site-name>.  
+
+If you find ANY bugs or compiler errors in this code then mail me to 
+let me know (Put Crypt in the subject line) and I will credit you in the
+next release (if any).  Any bugs found will be listed on the web page.
+
+At the time of writing though, I wasn't aware of any bugs :>
+
+PLEASE NOTE:  DO NOT mail me with problems about YOUR code!  I won't even
+answer :)
+
+The Crypt code includes stub functions which can be used to execute other
+programs at certain times of day.  These are off by default in the config
+file.  The 1st is called do_backup and the idea is to get it to run a backup
+program each day.  If you have 'zip' (and most systems do) then just turn it
+on and make sure zip is in the programs path.  You'll have to look at the
+code file to make sure the parameters are right for your system.  I use
+'zip -r userfiles.zip userfiles' which makes a backup of the userfiles
+each night (obviously :)  The 2nd stub is called doweb and I use it to call
+a program that produces web pages from the userfiles.  You can call your
+own program here or just leave it turned off.
+
+Ok, I know this README file doesn't nearly cover everything but if you have
+a general idea of what talkers are and how to use Unix/Windows then you
+won't have a problem... :)  
+
+Thanks must go to:
+
+Scott MacKenzie, Marty Greenwell, Chris Jackson, Thomas Neill and probably lots
+more people that I can't remember!  (Sorry if you're one of them..)
+
+*******************************************************************************
+

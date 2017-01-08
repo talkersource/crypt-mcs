@@ -1,0 +1,7 @@
+You must be using Borland C++ v5.0 - I can't garauntee it will compile on any other windows compiler.
+
+I have tested this under Borland C++ v4.5 and v5.0, load the
+file into the IDE and select WIN32 Console app, static libraries and turn
+off all compiler warnings.  This should work in the same way for the Microsoft
+compiler but I haven't tested it.  You should make sure the platform.h file
+is set for a Windows compile.

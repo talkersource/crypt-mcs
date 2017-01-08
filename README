@@ -1,0 +1,27 @@
+####################################################
+The Crypt Multiline Chat System Version 6.0
+####################################################
+
+NOTE: PLEASE DO NOT CONTACT THE ORIGINAL AUTHORS OF the NUTS TALKER, or
+CRYPT TALKER - THEY WILL NOT SUPPORT YOU, NOR SHOULD THEY HAVE TO DEAL WITH
+MY BUG^H^H^HFEATURES.
+
+############################################################################
+
+############################################################################
+
+This project is brought to you by Rick Collette (rcollette at users.sourceforge.net), Steve Brock ( email tbd ), the letter J and the number BLUE.
+
+############################################################################
+
+Files of interest:
+
+Documentation/COMPILE - How to compile on *NIX machines (Solaris, Linux, etc)
+
+Documentation/NOTES - Various notes about the recoding of The Crypt Talker V5.3 into Crypt Multiuser Chat System V6.
+
+HISTORICAL/OldDocumentation/* The old texts were getting so coulded that by the time you got to what you really wanted, you were too bored to continue reading.
+
+
+NOTE: The HISTORICAL directory is where we're sticking all the stuff that's required by the old original codebase.  Hopefully, you'll not need to consult that stuff - since this will be completely re-vamped.
+

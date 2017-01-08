@@ -1,0 +1,10 @@
+
+~FT* All Xterm *
+
+Usage: .allxterm <text string>
+
+The changes the title bar & icon of all xterms connected to the talker!
+Users who have their termtype set to non-xterm get a string of the text.
+
+~FRSee: ~FYmyxterm
+

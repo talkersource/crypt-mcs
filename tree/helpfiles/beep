@@ -1,0 +1,7 @@
+
+~FT* beep *
+
+Usage: beep user <message>
+
+Beeps a users terminal with an optional message
+

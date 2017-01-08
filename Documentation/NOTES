@@ -1,0 +1,13 @@
+NOTES
+=====
+
+10/25/2005 - Rick Collette: I'm starting to break the program out into something more easily managed.  One giany monolithic c file is just way to overwhelming.  Kudos to Mish and friends for being able to regularly sift through that massive file and get such killer code out the door.
+
+I have moved the Wbe Generation Code out - The plan is to move it out, make sure everything still works as expected, and then add a bit to it.  I'd like the web page generation to have some configurability to it.  This way, if someone other than me wants to run a Chat System, they can config a text file rather than have to code, hack, smack, crack, and compile.  This philosophy will continue throughout the whole system.
+
+* Moved some files out of datafiles/ to a new directory called text/ - it seems to make sense to have a textfile directory for the stuff that will regularly change by hand, and to have the stuff that changes from the system (users, configs, etc) be in datafiles.
+
+* Created the tree structure - makes for a little easier handling of the builds + easier to install in it's own living space.
+
+* Created the var tree - this is where syslog and pid will live.
+

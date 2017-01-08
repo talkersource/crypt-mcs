@@ -1,0 +1,6 @@
+COMPILE = gcc 
+LINK    = gcc
+LIBS    = crypt
+
+server:	cryptv53.c cryptv53.h
+	$(COMPILE) -o server cryptv53.c -l$(LIBS)

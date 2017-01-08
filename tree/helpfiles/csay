@@ -1,0 +1,10 @@
+
+~FT* csay *
+
+Usage: csay <room>
+
+Will make one of your clones in the given room speak. If you see something
+nasty being said in the clones room its an alternative to shouting, telling
+or actually going to the room to admonish the miscreant.
+
+~FRSee:~FY clone, destroy, allclones, myclones, chear, switch, cemote

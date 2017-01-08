@@ -1,0 +1,9 @@
+
+~FT* pdesc *
+
+This sets a word which will prepend your name, ie, Mr User.  
+
+To remove it type .pdesc none
+
+~FRSee also:~FY desc
+

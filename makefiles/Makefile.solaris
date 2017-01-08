@@ -1,0 +1,6 @@
+COMPILE = cc 
+LINK    = cc
+LIBS    = -lsocket -lnsl -lcrypt
+
+thecryptd:	cryptv6.c cryptv6.h
+	$(COMPILE) -o thecryptd cryptv6.c $(LIBS)

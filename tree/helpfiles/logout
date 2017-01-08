@@ -1,0 +1,7 @@
+
+~FT* logout *
+
+Sets the phrase which appears when you logout.
+
+~FRSee: ~FYlogin, inphr, outphr
+

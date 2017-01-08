@@ -1,0 +1,12 @@
+
+~FT* termtype *
+
+Usage: .termtype [0|1|2|3]
+
+0: Colour compatible, Xterm compatible terminal type - DEFAULT
+1: Non-colour, Xterm compatible terminal type
+2: Colour compatible, non Xterm terminal type, eg, DOS, Linux Console
+3: Non-colour, non Xterm terminal type
+
+~FRSee also:~FY colour
+

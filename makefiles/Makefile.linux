@@ -1,0 +1,17 @@
+COMPILE = gcc 
+LINK    = gcc
+LIBS    = -lcrypt
+
+all:	cryptmcs userinfo cmcsview
+
+cryptmcs:	src/cryptmcs.c src/cryptmcs.h
+	$(COMPILE) -o tree/bin/cryptmcs src/cryptmcs.c $(LIBS)
+
+userinfo:	src/userinfo.c src/cryptmcs.h
+	$(COMPILE) -o tree/bin/userinfo src/userinfo.c
+
+cmcsview:	src/cmcsview.c
+	$(COMPILE) -o tree/bin/cmcsview src/cmcsview.c
+
+clean:	
+	rm tree/bin/*

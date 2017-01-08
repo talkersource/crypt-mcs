@@ -1,0 +1,15 @@
+
+~FT* bsx *
+
+Usage: .bsx user
+
+This is a simple command that should print out a Crypt logo on the screen of
+a user using an graphical version of Xtush using the BSX graphics protocol.
+
+To test who is using xtush on the talker try typing ~FG.shout @RQV~RS which
+is the xtush protocol to return the version number.  Any users that respond
+to this (with the string !! User VER XWIN x.x) can be .bsx'd :)
+
+There is also a command to instantly crash users using xtush but I won't
+reveal it here :)
+ 

@@ -1,0 +1,33 @@
+
+~FT* figlet *
+
+Prints out a message in a large font using ASCII characters,eg,
+ _   _        _  _         __        __              _      _ 
+| | | |  ___ | || |  ___   \ \      / /  ___   _ __ | |  __| |
+| |_| | / _ \| || | / _ \   \ \ /\ / /  / _ \ | '__|| | / _` |
+|  _  ||  __/| || || (_) |   \ V  V /  | (_) || |   | || (_| |
+|_| |_| \___||_||_| \___/     \_/\_/    \___/ |_|   |_| \__,_|
+
+
+*PLEASE* make sure your terminal is set to 80 characters width!
+
+To use different fonts type .figlet -fontname.flf Message, eg,
+.figlet -slant.flf Hello
+           __  __          __    __       
+          / / / /  ___    / /   / /  ____ 
+         / /_/ /  / _ \  / /   / /  / __ \
+        / __  /  /  __/ / /   / /  / /_/ /
+       /_/ /_/   \___/ /_/   /_/   \____/ 
+                                          
+The complete list of fonts is:
+
+big.flf         epic.flf        relief.flf      smscript.flf    thin.flf
+block.flf       gothic.flf      rounded.flf     smshadow.flf    ticksslant.flf
+bubble.flf      lean.flf        script.flf      smslant.flf     tombstone.flf
+cyberlarge.flf  mini.flf        shadow.flf      standard.flf    usaflag.flf
+digital.flf     poison.flf      slant.flf       starwars.flf    weird.flf
+drpepper.flf    puffy.flf       small.flf       term.flf
+
+
+[Code based on figlet (Frank, Ian & Glenn's Letters) release 2.1.1]
+

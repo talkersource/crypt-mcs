@@ -1,0 +1,12 @@
+From *NIX:
+
+cd to the source tree (the directory with README, Documentation/, that stuff)
+ln -sf makefiles/Makefile.PLATFORM Makefile
+make
+
+If you look in makefiles/ you'll find a Makefile for most every *NIX platform.
+
+To compile for Windows, please see the file Documentation/WINDOWS.COMPILE
+
+-- Rick
+
